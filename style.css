@@ -1,0 +1,121 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#dispaly-and-clear-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#clear{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 1px;
+    height: 20px;
+    width: 30px;
+    padding: 30px;
+    border:4px solid black; 
+    border-radius: 15px;
+    background-color: rgb(228, 67, 67);
+
+}
+#clear:hover{
+    background-color: rgb(208, 27, 27);
+
+}
+#clear:active{
+    transform:scale(1.04);
+}
+#container{
+    
+    margin-top: 300px;
+}
+#display-calculator{
+    font-size: 25px;
+    text-align: right;
+    height: 20px;
+    width: 350px;
+    padding: 30px;
+    border: 4px solid black;
+    border-radius: 15px;
+}
+#numbers-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 1px;
+    padding: 20px;
+    border: 4px solid black;
+    border-radius: 15px;
+}
+#numbers-container{
+    display: flex;
+    height: auto;
+    width: 517px;
+}
+#digits{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    margin: 1px;
+    height: 40px;
+    width: 120px;
+    border: 4px solid black;
+    border-radius: 15px;
+}
+#digits:hover{
+    background-color: rgb(139, 229, 209);
+
+}
+#digits:active{
+    transform:scale(1.04);
+}
+#operators{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(224, 232, 119);
+    font-size: 25px;
+    text-align: center;
+    margin: 1px;
+    height: 40px;
+    width: 70px;
+    border: 4px solid black;
+    border-radius: 15px;
+}
+#operators:hover{
+    background-color: rgb(230, 244, 34);
+}
+#operators:active{
+    transform:scale(1.1);
+}
+#equals{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(160, 229, 139);
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    margin: 1px;
+    height: 40px;
+    width: 120px;
+    border: 4px solid black;
+    border-radius: 15px;
+}
+#equals:hover{
+    background-color:rgb(126, 225, 96);
+}
+#equals:active{
+    transform:scale(1.1);
+}
+ul{
+    list-style-type: none;
+}
