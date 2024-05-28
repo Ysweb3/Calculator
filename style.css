@@ -31,11 +31,14 @@ body{
     transform:scale(1.04);
 }
 #container{
-    
+    border:5px solid black; 
+    border-radius: 15px;
     margin-top: 300px;
+    padding: 10px;
 }
 #display-calculator{
-    font-size: 25px;
+    font-size: 30px;
+    font-weight: 700;
     text-align: right;
     height: 20px;
     width: 350px;
