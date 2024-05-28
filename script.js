@@ -17,6 +17,7 @@ const calMultiply = document.querySelector(".multiply");
 const calDivide = document.querySelector(".divide");
 const calEquals = document.querySelector(".equals");
 
+let operateResult;
 let operator = "";
 let tempValue = "";
 let a = "";
@@ -53,89 +54,134 @@ function divide(a,b){
 //Events digits
 digitOne.addEventListener("click" , () => { 
     calDisplay.textContent += "1";
-    tempValue += "1"
-    console.log(tempValue)
+    tempValue += "1";
+    console.log(tempValue);
 })
 digitTwo.addEventListener("click" , () => { 
     calDisplay.textContent += "2";
-    tempValue += "2"
-    console.log(tempValue)
+    tempValue += "2";
+    console.log(tempValue);
 })
 digitThree.addEventListener("click" , () => { 
     calDisplay.textContent += "3";
-    tempValue += "3"
-    console.log(tempValue)
+    tempValue += "3";
+    console.log(tempValue);
 })
 digitFour.addEventListener("click" , () => { 
     calDisplay.textContent += "4";
-    tempValue += "4"
-    console.log(tempValue)
+    tempValue += "4";
+    console.log(tempValue);
 })
 digitFive.addEventListener("click" , () => { 
     calDisplay.textContent += "5";
-    tempValue += "5"
-    console.log(tempValue)
+    tempValue += "5";
+    console.log(tempValue);
 })
 digitSix.addEventListener("click" , () => { 
     calDisplay.textContent += "6";
-    tempValue += "6"
-    console.log(tempValue)
+    tempValue += "6";
+    console.log(tempValue);
 })
 digitSeven.addEventListener("click" , () => { 
     calDisplay.textContent += "7";
-    tempValue += "7"
-    console.log(tempValue)
+    tempValue += "7";
+    console.log(tempValue);
 })
 digitEight.addEventListener("click" , () => { 
     calDisplay.textContent += "8";
-    tempValue += "8"
-    console.log(tempValue)
+    tempValue += "8";
+    console.log(tempValue);
 })
 digitNine.addEventListener("click" , () => { 
     calDisplay.textContent += "9";
-    tempValue += "9"
-    console.log(tempValue)
+    tempValue += "9";
+    console.log(tempValue);
 })
 digitZero.addEventListener("click" , () => { 
     calDisplay.textContent += "0";
-    tempValue += "0"
-    console.log(tempValue)
+    tempValue += "0";
+    console.log(tempValue);
 })
 digitDecimal.addEventListener("click" , () => { 
     calDisplay.textContent += ".";
-    tempValue += "."
-    console.log(tempValue)
+    tempValue += ".";
+    console.log(tempValue);
 })
 
-
+let operatorPressed = false;
 //Events operator
 calAdd.addEventListener("click" , () => {
-    a = tempValue;
-    tempValue = "";
     operator = "+";
-    calDisplay.textContent = a + "+"
-    console.log(a);
+    if (operatorPressed == false) {
+        operatorPressed = true;
+        a = tempValue;
+        tempValue = "";
+        calDisplay.textContent = a + "+"
+    }else { 
+        a = operate(operator,parseFloat(a),parseFloat(tempValue));
+        if (isNaN(a) == true) {
+            calDisplay.textContent = "Invalid Input Reset";
+        }   
+        else{
+            tempValue = "";
+            calDisplay.textContent = a + "+";
+        }
+    } 
 })
 calSubtract.addEventListener("click" , () => {
-    a = tempValue;
-    tempValue = "";
     operator = "-";
-    calDisplay.textContent = a + "-"
-    console.log(a);
+    if (operatorPressed == false) {
+        operatorPressed = true;
+        a = tempValue;
+        tempValue = "";
+        calDisplay.textContent = a + "-"
+    }else { 
+        a = operate(operator,parseFloat(a),parseFloat(tempValue));
+        if (isNaN(a) == true) {
+            calDisplay.textContent = "Invalid Input Reset";
+        }   
+        else{
+            tempValue = "";
+            calDisplay.textContent = a + "-";
+        }
+    } 
 })
 calMultiply.addEventListener("click" , () => {
-    a = tempValue;
-    tempValue = "";
     operator = "x";
-    calDisplay.textContent = a + "x"
-    console.log(a);
+    if (operatorPressed == false) {
+        operatorPressed = true;
+        a = tempValue;
+        tempValue = "";
+        calDisplay.textContent = a + "x"
+    }else { 
+        a = operate(operator,parseFloat(a),parseFloat(tempValue));
+        if (isNaN(a) == true) {
+            calDisplay.textContent = "Invalid Input Reset";
+        }   
+        else{
+            tempValue = "";
+            calDisplay.textContent = a + "x";
+        }
+
+    } 
 })
 calDivide.addEventListener("click" , () => {
-    a = tempValue;
-    tempValue = "";
     operator = "/";
-    calDisplay.textContent = a + "÷"
-    console.log(a);
+    if (operatorPressed == false) {
+        operatorPressed = true;
+        a = tempValue;
+        tempValue = "";
+        calDisplay.textContent = a + "÷"
+    }else { 
+        a = operate(operator,parseFloat(a),parseFloat(tempValue));
+        if (isNaN(a) == true) {
+            calDisplay.textContent = "Invalid Input Reset";
+        }   
+        else{
+            tempValue = "";
+            calDisplay.textContent = a + "÷";
+        }
+    } 
 })
 
 
@@ -144,10 +190,21 @@ calClear.addEventListener("click" , () => {
     calDisplay.textContent = "";
     tempValue = "";
     a = "";
+    operatorPressed = false;
 })
 
 calEquals.addEventListener("click" , () => {
-    calDisplay.textContent = operate(operator,parseFloat(a),parseFloat(tempValue));
-
+    operateResult = operate(operator,parseFloat(a),parseFloat(tempValue));
+    if (isNaN(operateResult) == true) {
+        calDisplay.textContent = "Invalid Input Reset";
+    }
+    else{
+        calDisplay.textContent = "";
+        calDisplay.textContent = operateResult;
+        tempValue = operateResult;
+        operatorPressed = false;
+        tempValue = operateResult;
+        a = "";
+    }
 })
 
