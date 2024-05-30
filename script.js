@@ -11,6 +11,7 @@ const digitZero = document.querySelector(".zero");
 const digitDecimal = document.querySelector(".decimal");
 const calDisplay = document.querySelector("#display-calculator");
 const calClear = document.querySelector("#clear");
+const calBackspace = document.querySelector("#backspace");
 const calAdd = document.querySelector(".add");
 const calSubtract = document.querySelector(".subtract");
 const calMultiply = document.querySelector(".multiply");
@@ -67,12 +68,12 @@ digitThree.addEventListener("click" , () => {
 digitFour.addEventListener("click" , () => { 
     calDisplay.textContent += "4";
     tempValue += "4";
-    (tempValue);
+    
 })
 digitFive.addEventListener("click" , () => { 
     calDisplay.textContent += "5";
     tempValue += "5";
-    (tempValue);
+    
 })
 digitSix.addEventListener("click" , () => { 
     calDisplay.textContent += "6";
@@ -107,7 +108,6 @@ digitDecimal.addEventListener("click" , () => {
     else{
         //Do nothing
     }
-
 })
 
 //Events operator
@@ -198,6 +198,24 @@ calClear.addEventListener("click" , () => {
     a = "";
     operatorPressed = false;
     decimalPressed = false;
+})
+calBackspace.addEventListener("click" , () => {
+    if (operatorPressed == false) {
+        tempValue = tempValue.slice(0,tempValue.length - 1)
+        calDisplay.textContent = tempValue;
+        console.log("temp"+tempValue);
+        console.log("a" +a)
+        
+    }
+    else{
+        tempValue = tempValue.slice(0,tempValue.length - 1)
+        calDisplay.textContent = a + operator + tempValue;
+        console.log("temp"+tempValue);
+        console.log("a" +a)
+        
+    }
+    
+    
 })
 
 calEquals.addEventListener("click" , () => {
