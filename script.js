@@ -22,7 +22,7 @@ let operator = "";
 let tempValue = "";
 let a = "";
 
-
+//Functions
 function operate(operator,a,b){
     switch (operator) {
         case "+":
@@ -55,62 +55,65 @@ function divide(a,b){
 digitOne.addEventListener("click" , () => { 
     calDisplay.textContent += "1";
     tempValue += "1";
-    console.log(tempValue);
 })
 digitTwo.addEventListener("click" , () => { 
     calDisplay.textContent += "2";
     tempValue += "2";
-    console.log(tempValue);
 })
 digitThree.addEventListener("click" , () => { 
     calDisplay.textContent += "3";
     tempValue += "3";
-    console.log(tempValue);
 })
 digitFour.addEventListener("click" , () => { 
     calDisplay.textContent += "4";
     tempValue += "4";
-    console.log(tempValue);
+    (tempValue);
 })
 digitFive.addEventListener("click" , () => { 
     calDisplay.textContent += "5";
     tempValue += "5";
-    console.log(tempValue);
+    (tempValue);
 })
 digitSix.addEventListener("click" , () => { 
     calDisplay.textContent += "6";
     tempValue += "6";
-    console.log(tempValue);
 })
 digitSeven.addEventListener("click" , () => { 
     calDisplay.textContent += "7";
     tempValue += "7";
-    console.log(tempValue);
 })
 digitEight.addEventListener("click" , () => { 
     calDisplay.textContent += "8";
     tempValue += "8";
-    console.log(tempValue);
+
 })
 digitNine.addEventListener("click" , () => { 
     calDisplay.textContent += "9";
     tempValue += "9";
-    console.log(tempValue);
+   
 })
 digitZero.addEventListener("click" , () => { 
     calDisplay.textContent += "0";
     tempValue += "0";
-    console.log(tempValue);
+
 })
-digitDecimal.addEventListener("click" , () => { 
-    calDisplay.textContent += ".";
-    tempValue += ".";
-    console.log(tempValue);
+let decimalPressed = false;
+digitDecimal.addEventListener("click" , () => {
+    if (decimalPressed == false) {
+        decimalPressed = true;
+        calDisplay.textContent += ".";
+        tempValue += ".";
+    } 
+    else{
+        //Do nothing
+    }
+
 })
 
-let operatorPressed = false;
 //Events operator
+let operatorPressed = false;
 calAdd.addEventListener("click" , () => {
+    decimalPressed = false;
     operator = "+";
     if (operatorPressed == false) {
         operatorPressed = true;
@@ -118,9 +121,9 @@ calAdd.addEventListener("click" , () => {
         tempValue = "";
         calDisplay.textContent = a + "+"
     }else { 
-        a = operate(operator,parseFloat(a),parseFloat(tempValue));
+        a = operate(operator,parseFloat(a),parseFloat(tempValue)).toFixed(2);
         if (isNaN(a) == true) {
-            calDisplay.textContent = "Invalid Input Reset";
+            calDisplay.textContent = "Invalid Input,Reset";
         }   
         else{
             tempValue = "";
@@ -129,6 +132,7 @@ calAdd.addEventListener("click" , () => {
     } 
 })
 calSubtract.addEventListener("click" , () => {
+    decimalPressed = false;
     operator = "-";
     if (operatorPressed == false) {
         operatorPressed = true;
@@ -136,9 +140,9 @@ calSubtract.addEventListener("click" , () => {
         tempValue = "";
         calDisplay.textContent = a + "-"
     }else { 
-        a = operate(operator,parseFloat(a),parseFloat(tempValue));
+        a = operate(operator,parseFloat(a),parseFloat(tempValue)).toFixed(2);
         if (isNaN(a) == true) {
-            calDisplay.textContent = "Invalid Input Reset";
+            calDisplay.textContent = "Invalid Input,Reset";
         }   
         else{
             tempValue = "";
@@ -147,6 +151,7 @@ calSubtract.addEventListener("click" , () => {
     } 
 })
 calMultiply.addEventListener("click" , () => {
+    decimalPressed = false;
     operator = "x";
     if (operatorPressed == false) {
         operatorPressed = true;
@@ -154,9 +159,9 @@ calMultiply.addEventListener("click" , () => {
         tempValue = "";
         calDisplay.textContent = a + "x"
     }else { 
-        a = operate(operator,parseFloat(a),parseFloat(tempValue));
+        a = operate(operator,parseFloat(a),parseFloat(tempValue)).toFixed(2);
         if (isNaN(a) == true) {
-            calDisplay.textContent = "Invalid Input Reset";
+            calDisplay.textContent = "Invalid Input,Reset";
         }   
         else{
             tempValue = "";
@@ -166,6 +171,7 @@ calMultiply.addEventListener("click" , () => {
     } 
 })
 calDivide.addEventListener("click" , () => {
+    decimalPressed = false;
     operator = "/";
     if (operatorPressed == false) {
         operatorPressed = true;
@@ -173,9 +179,9 @@ calDivide.addEventListener("click" , () => {
         tempValue = "";
         calDisplay.textContent = a + "÷"
     }else { 
-        a = operate(operator,parseFloat(a),parseFloat(tempValue));
+        a = operate(operator,parseFloat(a),parseFloat(tempValue)).toFixed(2);
         if (isNaN(a) == true) {
-            calDisplay.textContent = "Invalid Input Reset";
+            calDisplay.textContent = "Invalid Input,Reset";
         }   
         else{
             tempValue = "";
@@ -191,18 +197,20 @@ calClear.addEventListener("click" , () => {
     tempValue = "";
     a = "";
     operatorPressed = false;
+    decimalPressed = false;
 })
 
 calEquals.addEventListener("click" , () => {
-    operateResult = operate(operator,parseFloat(a),parseFloat(tempValue));
+    operateResult = operate(operator,parseFloat(a),parseFloat(tempValue)).toFixed(2);
     if (isNaN(operateResult) == true) {
-        calDisplay.textContent = "Invalid Input Reset";
+        calDisplay.textContent = "Invalid Input,Reset";
     }
     else{
         calDisplay.textContent = "";
         calDisplay.textContent = operateResult;
         tempValue = operateResult;
         operatorPressed = false;
+        decimalPressed = false;
         tempValue = operateResult;
         a = "";
     }
